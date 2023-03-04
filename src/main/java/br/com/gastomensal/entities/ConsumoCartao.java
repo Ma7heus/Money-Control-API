@@ -2,10 +2,27 @@ package br.com.gastomensal.entities;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+
+
+
+
+@Entity
 public class ConsumoCartao {
 
-	private Long id;
+	@Id
+	@SequenceGenerator(name = "SEQUENCE_CONSUMO_CARTAO", sequenceName = "IDCONSUMOCARTAO", allocationSize = 1)
+	@GeneratedValue(generator = "SEQUENCE_CONSUMO_CARTAO", strategy = GenerationType.SEQUENCE)
+	private Long idConsumoCartao;
 
+	@Temporal(TemporalType.TIMESTAMP)
 	private String data;
 
 	private String categoria;
@@ -14,12 +31,23 @@ public class ConsumoCartao {
 
 	private BigDecimal valorTransacao;
 
-	public Long getId() {
-		return id;
+	public ConsumoCartao() {
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public ConsumoCartao(String data, String categoria, String nomeEstabelecimento,
+			BigDecimal valorTransacao) {
+		this.data = data;
+		this.categoria = categoria;
+		this.nomeEstabelecimento = nomeEstabelecimento;
+		this.valorTransacao = valorTransacao;
+	}
+
+	public Long getIdConsumoCartao() {
+		return idConsumoCartao;
+	}
+
+	public void setIdConsumoCartao(Long idConsumoCartao) {
+		this.idConsumoCartao = idConsumoCartao;
 	}
 
 	public String getData() {
@@ -56,8 +84,8 @@ public class ConsumoCartao {
 
 	@Override
 	public String toString() {
-		return "ConsumoCartao [id=" + id + ", data=" + data + ", categoria=" + categoria + ", nomeEstabelecimento="
-				+ nomeEstabelecimento + ", valorTransacao=" + valorTransacao + "]";
+		return "ConsumoCartao [idConsumoCartao=" + idConsumoCartao + ", data=" + data + ", categoria=" + categoria
+				+ ", nomeEstabelecimento=" + nomeEstabelecimento + ", valorTransacao=" + valorTransacao + "]";
 	}
 
 }

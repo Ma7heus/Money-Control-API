@@ -13,11 +13,11 @@ public class ReadCSVFile {
 
 	public static void main(String[] args) {
 		try {
-			File file = new File("C:\\Users\\biasi\\OneDrive\\Área de Trabalho\\nubank.csv");
+			File file = new File("C:\\Users\\biasi\\OneDrive\\ï¿½rea de Trabalho\\nubank.csv");
 			Scanner scanner = new Scanner(file);
 			scanner.useDelimiter(",");
 			
-			List<ConsumoCartao> listaGastos = new ArrayList<>();
+			List<ConsumoCartao> listaGastos = new ArrayList<ConsumoCartao>();
 			
 			while (scanner.hasNextLine()) {
 				String linha = scanner.nextLine();

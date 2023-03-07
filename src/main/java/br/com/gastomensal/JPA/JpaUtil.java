@@ -3,15 +3,12 @@ package br.com.gastomensal.JPA;
 
 import java.math.BigDecimal;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+
 
 import br.com.gastomensal.entities.ConsumoCartao;
+import jakarta.persistence.EntityManager;
 
 public class JpaUtil {
-
-	@PersistenceContext
-	private static EntityManager em;
 	
 	ConsumoCartao consumoCartao =  new ConsumoCartao(
 			"teste",
@@ -19,13 +16,20 @@ public class JpaUtil {
 			"teste",
 			new BigDecimal(1));
 
-	public static void pesist(ConsumoCartao consumoCartao) {
-		em.persist(consumoCartao);
+	public static void pesist(ConsumoCartao consumoCartao) throws Exception{
+		getEm().getTransaction().begin();
+		getEm().persist(consumoCartao);
+		getEm().getTransaction().commit();
+		getEm().close();
 		System.out.println("Salvo com sucesso");
 	}
+
+	private static EntityManager getEm() {
+		EntityManagerFactoryUtil em = new EntityManagerFactoryUtil();
+		return em.createEntityManager();
+	}
 	
-	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		
 		ConsumoCartao consumoCartao =  new ConsumoCartao(
 				"teste",
@@ -33,9 +37,11 @@ public class JpaUtil {
 				"teste",
 				new BigDecimal(1));
 		
-		pesist(consumoCartao);
+		getEm().persist(consumoCartao);
 	
 	}
+	
+	
 	
 
 	

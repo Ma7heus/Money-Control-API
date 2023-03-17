@@ -23,13 +23,13 @@ public class ConsumoCartao {
 
 	private String nomeEstabelecimento;
 
-	private BigDecimal valorTransacao;
+	private String valorTransacao;
 
 	public ConsumoCartao() {
 	}
 
 	public ConsumoCartao(String data, String categoria, String nomeEstabelecimento,
-			BigDecimal valorTransacao) {
+			String valorTransacao) {
 		this.data = data;
 		this.categoria = categoria;
 		this.nomeEstabelecimento = nomeEstabelecimento;
@@ -68,11 +68,11 @@ public class ConsumoCartao {
 		this.nomeEstabelecimento = nomeEstabelecimento;
 	}
 
-	public BigDecimal getValorTransacao() {
+	public String getValorTransacao() {
 		return valorTransacao;
 	}
 
-	public void setValorTransacao(BigDecimal valorTransacao) {
+	public void setValorTransacao(String valorTransacao) {
 		this.valorTransacao = valorTransacao;
 	}
 

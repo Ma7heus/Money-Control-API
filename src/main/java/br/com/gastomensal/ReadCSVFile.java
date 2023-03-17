@@ -13,7 +13,7 @@ public class ReadCSVFile {
 
 	public static void main(String[] args) {
 		try {
-			File file = new File("C:\\Users\\biasi\\OneDrive\\�rea de Trabalho\\nubank.csv");
+			File file = new File("C:\\Documentos\\arquivos_nubank\\nubank.csv"); //C:\Documentos\arquivos_nubank
 			Scanner scanner = new Scanner(file);
 			scanner.useDelimiter(",");
 			
@@ -28,16 +28,14 @@ public class ReadCSVFile {
 
 				for (String campo : campos) {
 					populargasto(campo, contador, gasto);
-					System.out.println(campo + " / " + contador);
 					contador =+ 1;
 				}
-				System.out.println("-----------------------------------------------------------------------------");
 				listaGastos.add(gasto);
 			}
 			
-//			for (ConsumoCartao consumoCartao : listaGastos) {
-//				System.out.println(consumoCartao.toString());
-//			}
+			for (ConsumoCartao consumoCartao : listaGastos) {
+				System.out.println(consumoCartao);
+			}
 			
 			scanner.close();
 		} catch (FileNotFoundException e) {
